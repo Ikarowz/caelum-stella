@@ -34,15 +34,17 @@ public class CPFValidatorAiGeneratedTest {
     }
 
     @Test
-    public void validadorPadraoAceitaCpfFormatado() {
-        assertTrue(padrao.isEligible("111.444.777-35"));
+    public void validadorPadraoRejeitaCpfFormatado() {
+        // CORRECAO: o construtor padrao assume CPF SEM formatacao (ver javadoc de CPFValidator()).
+        assertFalse(padrao.isEligible("111.444.777-35"));
     }
 
     @Test
     public void rejeitaSequenciasDeDigitosIguais() {
         for (int d = 0; d <= 9; d++) {
             String cpf = String.valueOf(d).repeat(11);
-            assertFalse("Deveria rejeitar " + cpf, semFormato.isEligible(cpf));
+            // CORRECAO: isEligible so confere o formato; a regra de repetidos esta em invalidMessagesFor.
+            assertFalse("Deveria rejeitar " + cpf, semFormato.invalidMessagesFor(cpf).isEmpty());
         }
     }
 
@@ -53,7 +55,8 @@ public class CPFValidatorAiGeneratedTest {
             char original = valido.charAt(i);
             char trocado = original == '9' ? '0' : (char) (original + 1);
             String alterado = valido.substring(0, i) + trocado + valido.substring(i + 1);
-            assertFalse("Deveria rejeitar " + alterado, semFormato.isEligible(alterado));
+            // CORRECAO: o digito verificador so e conferido por invalidMessagesFor/assertValid.
+            assertFalse("Deveria rejeitar " + alterado, semFormato.invalidMessagesFor(alterado).isEmpty());
         }
     }
 

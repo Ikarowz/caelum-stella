@@ -1,20 +1,20 @@
 classe_de_teste,metodo,compilou,passou_na_1a_execucao,tipo_do_erro,correcao_aplicada
-CPFValidatorAiGeneratedTest,aceitaCpfValidoFormatado,,,,
-CPFValidatorAiGeneratedTest,aceitaCpfValidoNaoFormatado,,,,
-CPFValidatorAiGeneratedTest,validadorPadraoAceitaCpfFormatado,,,,
-CPFValidatorAiGeneratedTest,rejeitaSequenciasDeDigitosIguais,,,,
-CPFValidatorAiGeneratedTest,rejeitaCpfComUmDigitoAlterado,,,,
-CPFValidatorAiGeneratedTest,rejeitaStringVazia,,,,
-CPFValidatorAiGeneratedTest,rejeitaEspacosEmBranco,,,,
-CPFValidatorAiGeneratedTest,rejeitaCpfNulo,,,,
-CPFValidatorAiGeneratedTest,assertValidNaoLancaExcecaoParaCpfValido,,,,
-CPFValidatorAiGeneratedTest,assertValidLancaExcecaoParaCpfInvalido,,,,
-CPFValidatorAiGeneratedTest,mensagensDeErroVaziasParaCpfValido,,,,
-CPFValidatorAiGeneratedTest,exatamenteUmaMensagemParaDigitoVerificadorInvalido,,,,
-CNPJValidatorAiGeneratedTest,aceitaCnpjValidoFormatado,,,,
-CNPJValidatorAiGeneratedTest,aceitaCnpjValidoNaoFormatado,,,,
-CNPJValidatorAiGeneratedTest,rejeitaSequenciasDeDigitosIguais,,,,
-CNPJValidatorAiGeneratedTest,rejeitaCnpjComUmDigitoAlterado,,,,
-CNPJValidatorAiGeneratedTest,rejeitaStringVazia,,,,
-CNPJValidatorAiGeneratedTest,rejeitaCnpjNulo,,,,
-CNPJValidatorAiGeneratedTest,rejeitaLetrasNoMeioDoNumero,,,,
+CPFValidatorAiGeneratedTest,aceitaCpfValidoFormatado,sim,sim,,
+CPFValidatorAiGeneratedTest,aceitaCpfValidoNaoFormatado,sim,sim,,
+CPFValidatorAiGeneratedTest,validadorPadraoAceitaCpfFormatado,sim,nao,premissa errada sobre o construtor padrao (assume CPF sem formatacao),teste renomeado para validadorPadraoRejeitaCpfFormatado e assercao invertida
+CPFValidatorAiGeneratedTest,rejeitaSequenciasDeDigitosIguais,sim,nao,uso incorreto da API (isEligible so confere formato),trocado por invalidMessagesFor(...).isEmpty()
+CPFValidatorAiGeneratedTest,rejeitaCpfComUmDigitoAlterado,sim,nao,uso incorreto da API (isEligible nao confere digito verificador),trocado por invalidMessagesFor(...).isEmpty()
+CPFValidatorAiGeneratedTest,rejeitaStringVazia,sim,sim,,
+CPFValidatorAiGeneratedTest,rejeitaEspacosEmBranco,sim,sim,,
+CPFValidatorAiGeneratedTest,rejeitaCpfNulo,sim,sim,,
+CPFValidatorAiGeneratedTest,assertValidNaoLancaExcecaoParaCpfValido,sim,sim,,
+CPFValidatorAiGeneratedTest,assertValidLancaExcecaoParaCpfInvalido,sim,sim,,
+CPFValidatorAiGeneratedTest,mensagensDeErroVaziasParaCpfValido,sim,sim,,
+CPFValidatorAiGeneratedTest,exatamenteUmaMensagemParaDigitoVerificadorInvalido,sim,sim,,
+CNPJValidatorAiGeneratedTest,aceitaCnpjValidoFormatado,sim,sim,,
+CNPJValidatorAiGeneratedTest,aceitaCnpjValidoNaoFormatado,sim,sim,,
+CNPJValidatorAiGeneratedTest,rejeitaSequenciasDeDigitosIguais,sim,nao,uso incorreto da API (isEligible so confere formato),trocado por invalidMessagesFor(...).isEmpty()
+CNPJValidatorAiGeneratedTest,rejeitaCnpjComUmDigitoAlterado,sim,nao,uso incorreto da API (isEligible nao confere digito verificador),trocado por invalidMessagesFor(...).isEmpty()
+CNPJValidatorAiGeneratedTest,rejeitaStringVazia,sim,sim,,
+CNPJValidatorAiGeneratedTest,rejeitaCnpjNulo,sim,sim,,
+CNPJValidatorAiGeneratedTest,rejeitaLetrasNoMeioDoNumero,sim,nao,premissa desatualizada (CNPJ alfanumerico valido desde 31/07/2026) e uso incorreto de isEligible,trocado por invalidMessagesFor(...).isEmpty(); o que invalida o numero e o digito verificador

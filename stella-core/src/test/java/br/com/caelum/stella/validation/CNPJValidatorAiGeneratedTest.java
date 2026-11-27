@@ -25,7 +25,8 @@ public class CNPJValidatorAiGeneratedTest {
     public void rejeitaSequenciasDeDigitosIguais() {
         for (int d = 0; d <= 9; d++) {
             String cnpj = String.valueOf(d).repeat(14);
-            assertFalse("Deveria rejeitar " + cnpj, semFormato.isEligible(cnpj));
+            // CORRECAO: isEligible so confere o formato; a regra de repetidos esta em invalidMessagesFor.
+            assertFalse("Deveria rejeitar " + cnpj, semFormato.invalidMessagesFor(cnpj).isEmpty());
         }
     }
 
@@ -36,7 +37,8 @@ public class CNPJValidatorAiGeneratedTest {
             char original = valido.charAt(i);
             char trocado = original == '9' ? '0' : (char) (original + 1);
             String alterado = valido.substring(0, i) + trocado + valido.substring(i + 1);
-            assertFalse("Deveria rejeitar " + alterado, semFormato.isEligible(alterado));
+            // CORRECAO: o digito verificador so e conferido por invalidMessagesFor/assertValid.
+            assertFalse("Deveria rejeitar " + alterado, semFormato.invalidMessagesFor(alterado).isEmpty());
         }
     }
 
@@ -52,6 +54,8 @@ public class CNPJValidatorAiGeneratedTest {
 
     @Test
     public void rejeitaLetrasNoMeioDoNumero() {
-        assertFalse(semFormato.isEligible("11222A33000181"));
+        // CORRECAO: desde 31/07/2026 letras sao validas no CNPJ (formato alfanumerico). O que
+        // invalida este numero e o digito verificador, nao a letra; isEligible aceita letras.
+        assertFalse(semFormato.invalidMessagesFor("11222A33000181").isEmpty());
     }
 }
