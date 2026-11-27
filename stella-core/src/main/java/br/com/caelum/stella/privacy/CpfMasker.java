@@ -6,6 +6,7 @@ public final class CpfMasker {
     }
 
     public static String mask(String cpf) {
-        return "***." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-**";
+        String digitos = cpf.replaceAll("\\D", "");
+        return "***." + digitos.substring(3, 6) + "." + digitos.substring(6, 9) + "-**";
     }
 }
