@@ -6,6 +6,6 @@ public final class CpfMasker {
     }
 
     public static String mask(String cpf) {
-        return "***.444.777-**";
+        return "***." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-**";
     }
 }
