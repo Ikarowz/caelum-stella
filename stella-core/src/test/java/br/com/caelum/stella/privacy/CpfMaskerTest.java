@@ -20,4 +20,19 @@ public class CpfMaskerTest {
     public void mascaraCpfJaFormatado() {
         assertEquals("***.444.777-**", CpfMasker.mask("111.444.777-35"));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejeitaNulo() {
+        CpfMasker.mask(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejeitaMenosDeOnzeDigitos() {
+        CpfMasker.mask("1114447773");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void rejeitaMaisDeOnzeDigitos() {
+        CpfMasker.mask("111444777355");
+    }
 }
