@@ -2,7 +2,7 @@ package br.com.caelum.stella.validation.ie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 import br.com.caelum.stella.DigitoGenerator;
@@ -115,7 +115,7 @@ public class IERioGrandeDoSulValidator extends AbstractIEValidator {
 
 	@Override
 	public String generateRandomValid() {
-		final String primeiroDigito = String.valueOf(new Random().nextInt(5));
+		final String primeiroDigito = String.valueOf(ThreadLocalRandom.current().nextInt(5));
 		final String ieSemDigito = primeiroDigito + new DigitoGenerator().generate(8);
 		final String ieComDigito = ieSemDigito + calculaDigito(ieSemDigito);
 		if (isFormatted) {

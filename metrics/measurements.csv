@@ -1,0 +1,4 @@
+rotulo,data,cobertura_linhas_%,cobertura_ramos_%,mutantes_total,mortos,sobreviventes,sem_cobertura,mutation_score_%
+M0-baseline,2026-11-27,92.6,92.3,55,54,1,0,98.2
+M1-humano,2026-11-27,92.6,92.3,55,54,1,0,98.2
+M2-ia,2026-11-27,92.6,92.3,55,54,1,0,98.2

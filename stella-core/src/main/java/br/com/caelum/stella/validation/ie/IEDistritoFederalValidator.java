@@ -1,6 +1,6 @@
 package br.com.caelum.stella.validation.ie;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 import br.com.caelum.stella.DigitoGenerator;
@@ -81,9 +81,9 @@ public class IEDistritoFederalValidator extends AbstractIEValidator {
 	}
 
 	private String geraDoisPrimeirosDigitos() {
-		final Random random = new Random();
-		final String primeiroDigito = String.valueOf(random.nextInt(7) + 3);
-		final String segundoDigito = String.valueOf(random.nextInt(7) + 3);
+
+		final String primeiroDigito = String.valueOf(ThreadLocalRandom.current().nextInt(7) + 3);
+		final String segundoDigito = String.valueOf(ThreadLocalRandom.current().nextInt(7) + 3);
 		return primeiroDigito + segundoDigito;
 	}
 

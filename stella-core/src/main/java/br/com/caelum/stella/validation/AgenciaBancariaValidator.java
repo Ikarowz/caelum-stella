@@ -100,7 +100,7 @@ public class AgenciaBancariaValidator implements Validator<String> {
 		int sum = 0;
 		
 		for (int index = algarisms.length - 1; index >= 0; --index) {
-			sum += Integer.valueOf(algarisms[index]) * multiplier--;
+			sum += Integer.parseInt(algarisms[index]) * multiplier--;
 		}
 		
 		int rest = sum % 11;
