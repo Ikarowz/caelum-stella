@@ -15,4 +15,9 @@ public class CpfMaskerTest {
     public void mascaraOutroCpfSemFormatacao() {
         assertEquals("***.982.247-**", CpfMasker.mask("52998224725"));
     }
+
+    @Test
+    public void mascaraCpfJaFormatado() {
+        assertEquals("***.444.777-**", CpfMasker.mask("111.444.777-35"));
+    }
 }
