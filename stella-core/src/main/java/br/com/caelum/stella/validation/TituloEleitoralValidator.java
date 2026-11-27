@@ -3,7 +3,7 @@ package br.com.caelum.stella.validation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 import br.com.caelum.stella.DigitoGenerator;
@@ -232,7 +232,7 @@ public class TituloEleitoralValidator implements Validator<String> {
 	@Override
 	public String generateRandomValid() {
 		final String digitosSequenciais = new DigitoGenerator().generate(8);
-		final String digitosEstado = String.format("%02d", new Random().nextInt(28) + 1);
+		final String digitosEstado = String.format("%02d", ThreadLocalRandom.current().nextInt(28) + 1);
 		final String tituloSemDigito = digitosSequenciais + digitosEstado;
 		final String tituloComDigito = tituloSemDigito + calculaDigitos(tituloSemDigito);
 		if (isFormatted) {
